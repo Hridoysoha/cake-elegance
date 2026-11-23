@@ -460,7 +460,10 @@ function addMsg(text, who, lead){
     a.className = "wa-order";
     a.target = "_blank"; a.rel = "noopener";
     a.textContent = "WhatsApp-এ অর্ডার করুন";
-    const t = `আসসালামু আলাইকুম! নতুন অর্ডার:\nনাম: ${lead.name}\nমোবাইল: ${lead.phone}\nকেক: ${lead.product}`;
+    let t = `আসসালামু আলাইকুম! নতুন অর্ডার:\nনাম: ${lead.name}\nমোবাইল: ${lead.phone}\nকেক: ${lead.product}`;
+    if (lead.qty) t += `\nপরিমাণ: ${lead.qty}`;
+    if (lead.date) t += `\nতারিখ: ${lead.date}`;
+    if (lead.address) t += `\nঠিকানা: ${lead.address}`;
     a.href = `https://wa.me/${SHOP_WHATSAPP}?text=${encodeURIComponent(t)}`;
     div.appendChild(document.createElement("br"));
     div.appendChild(a);
