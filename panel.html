@@ -102,6 +102,8 @@
       <label>স্টকে কয়টা আছে (Quantity — খালি রাখলে সীমা নেই)</label>
       <input id="fQty" type="number" min="0" placeholder="যেমন 20">
       <label class="chk"><input type="checkbox" id="fFlash"> ⚡ Flash Sale ট্যাগ দেখাও</label>
+      <label>🎉 ফেস্টিভাল ট্যাগ (না চাইলে খালি রাখুন)</label>
+      <input id="fFest" placeholder="যেমন ঈদ ধামাকা অফার, পূজা স্পেশাল">
       <label class="chk"><input type="checkbox" id="fSold"> ❌ Sold Out — স্টক শেষ (order বন্ধ থাকবে)</label>
       <label class="chk"><input type="checkbox" id="fOrder" checked> 🛒 Order বাটন চালু রাখো</label>
       <label>ছবি</label>
@@ -209,7 +211,7 @@ function renderList() {
     info.innerHTML = "<div class='nm'></div><div class='meta'></div>";
     info.querySelector(".nm").textContent = p.name || "";
     info.querySelector(".meta").textContent = (p.id || "") + " · " + (p.cat || "") + (p.price ? " · " + p.price : " · দাম নেই")
-      + (p.flash ? " · ⚡Flash" : "") + (p.soldout ? " · Sold Out" : "");
+      + (p.flash ? " · ⚡Flash" : "") + (p.fest ? " · 🎉" : "") + (p.soldout ? " · Sold Out" : "");
     const acts = document.createElement("div");
     acts.className = "acts";
     const eb = document.createElement("button");
@@ -246,6 +248,7 @@ function openEditor(i) {
   $("fDesc").value = p.desc || "";
   $("fQty").value = (p.qty === undefined || p.qty === null) ? "" : p.qty;
   $("fFlash").checked = !!p.flash;
+  $("fFest").value = p.fest || "";
   $("fSold").checked = !!p.soldout;
   $("fOrder").checked = p.orderable !== false;
   $("fFile").value = "";
@@ -293,6 +296,7 @@ $("saveBtn").onclick = () => {
     desc: $("fDesc").value.trim(),
     qty: $("fQty").value.trim(),
     flash: $("fFlash").checked,
+    fest: $("fFest").value.trim(),
     soldout: $("fSold").checked,
     orderable: $("fOrder").checked,
     img: newImgData || editingImg

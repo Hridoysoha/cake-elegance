@@ -92,6 +92,7 @@ section{padding:58px 0}
 .pimg img{width:100%;height:100%;object-fit:cover}
 .pbadges{position:absolute;top:10px;left:10px;display:flex;flex-direction:column;gap:6px;align-items:flex-start;z-index:2}
 .badge-flash{background:#E63946;color:#fff;font-weight:800;font-size:.74rem;padding:4px 10px;border-radius:999px;box-shadow:0 3px 8px rgba(230,57,70,.35)}
+.badge-fest{background:linear-gradient(92deg,#7B2CBF,#C2437B);color:#fff;font-weight:800;font-size:.74rem;padding:4px 10px;border-radius:999px;box-shadow:0 3px 8px rgba(123,44,191,.35)}
 .badge-off{background:#C2437B;color:#fff;font-weight:800;font-size:.74rem;padding:4px 10px;border-radius:999px}
 .soldout-overlay{position:absolute;inset:0;background:rgba(20,20,20,.45);display:flex;align-items:center;justify-content:center;z-index:3}
 .soldout-overlay span{background:#C0392B;color:#fff;font-weight:800;font-size:1rem;padding:7px 18px;border-radius:999px;letter-spacing:.03em}
@@ -359,7 +360,7 @@ function cardHtml(p){
   const qtyN = (p.qty === "" || p.qty === undefined || p.qty === null) ? null : parseInt(p.qty, 10);
   const soldOut = !!p.soldout || qtyN === 0;
   const orderable = p.orderable !== false && !soldOut;
-  const badges = `<div class="pbadges">${p.flash ? `<span class="badge-flash">⚡ Flash Sale</span>` : ""}${off ? `<span class="badge-off">-${BN(off)}% OFF</span>` : ""}</div>`;
+  const badges = `<div class="pbadges">${p.fest ? `<span class="badge-fest">🎉 ${esc(p.fest)}</span>` : ""}${p.flash ? `<span class="badge-flash">⚡ Flash Sale</span>` : ""}${off ? `<span class="badge-off">-${BN(off)}% OFF</span>` : ""}</div>`;
   const priceHtml = p.price
     ? `<div>${off ? `<span class="mrp">৳ ${BN(p.mrp)}</span>` : ""}<span class="price-pill">৳ ${BN(p.price)}</span></div>`
     : `<div><span class="price-pill">দাম জানতে WhatsApp করুন</span></div>`;
