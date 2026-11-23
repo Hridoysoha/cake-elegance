@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cake Elegance — যেকোনো অনুষ্ঠানের কাস্টমাইজড কেক | নিউমার্কেট, চট্টগ্রাম</title>
+<meta name="description" content="Cake Elegance, নিউমার্কেট, চট্টগ্রাম — জন্মদিন, গায়ে হলুদ, বিবাহবার্ষিকী, বেবী শাওয়ার ও ব্রাইডাল শাওয়ারের কাস্টমাইজড কেক। চট্টগ্রামে হোম ডেলিভারি, WhatsApp-এ সহজ অর্ডার।">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FFF9F4; --rose:#C2437B; --rose-dark:#9C2B5E; --rose-soft:#F9DCE8;
+  --border:#F2D7E1; --ink:#3E2723; --muted:#8D7268; --card:#FFFFFF;
+  --radius:20px; --shadow:0 10px 30px rgba(194,67,123,.12);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Hind Siliguri',sans-serif;background:var(--bg);color:var(--ink);line-height:1.65;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+/* header */
+header{position:sticky;top:0;z-index:60;background:rgba(255,249,244,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:12px 0;gap:12px}
+.brand{display:flex;align-items:center;gap:12px}
+.brand img{width:46px;height:46px;border-radius:50%;object-fit:cover;border:2px solid var(--rose-soft)}
+.brand .bname{font-weight:700;font-size:1.25rem;color:var(--rose-dark);line-height:1.2}
+.brand .bsub{font-size:.78rem;color:var(--muted)}
+.navlinks{display:flex;gap:22px;font-weight:600;font-size:.98rem}
+.navlinks a:hover{color:var(--rose)}
+.navcta{background:var(--rose);color:#fff;padding:9px 18px;border-radius:999px;font-weight:600;font-size:.92rem;white-space:nowrap}
+.navcta:hover{background:var(--rose-dark)}
+@media(max-width:760px){.navlinks{display:none}}
+/* hero */
+.hero{position:relative;padding:64px 0 54px;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:
+  radial-gradient(560px 320px at 12% 8%,rgba(249,220,232,.55),transparent 65%),
+  radial-gradient(620px 380px at 88% 22%,rgba(246,227,211,.6),transparent 65%),
+  radial-gradient(480px 300px at 55% 100%,rgba(249,220,232,.4),transparent 65%);pointer-events:none}
+.hero-grid{position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:44px;align-items:center}
+@media(max-width:880px){.hero-grid{grid-template-columns:1fr}}
+.eyebrow{display:inline-block;background:#fff;border:1px solid var(--border);color:var(--rose-dark);font-weight:600;font-size:.85rem;padding:5px 14px;border-radius:999px;margin-bottom:16px}
+h1{font-size:clamp(2rem,5.2vw,3.3rem);line-height:1.25;font-weight:700;color:var(--ink)}
+h1 .grad{background:linear-gradient(92deg,var(--rose),#E88BB0);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p.lead{margin:18px 0 26px;font-size:1.1rem;color:var(--muted);max-width:34rem}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border-radius:999px;font-weight:700;font-size:1rem;transition:transform .15s ease, box-shadow .15s ease}
+.btn:hover{transform:translateY(-2px)}
+.btn-wa{background:#22a55b;color:#fff;box-shadow:0 10px 22px rgba(34,165,91,.3)}
+.btn-ghost{background:#fff;border:1.5px solid var(--border);color:var(--rose-dark)}
+.chips{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px}
+.chip{background:#fff;border:1px solid var(--border);border-radius:14px;padding:8px 14px;font-size:.9rem;font-weight:600;color:var(--rose-dark);box-shadow:0 4px 12px rgba(194,67,123,.07)}
+.hero-visual{position:relative}
+.hero-frame{border-radius:28px;padding:10px;background:linear-gradient(140deg,#F6B8CF,var(--rose-soft) 45%,#F6E3D3);box-shadow:var(--shadow)}
+.hero-frame img{border-radius:20px;width:100%;height:auto;object-fit:cover}
+.badge-float{position:absolute;background:#fff;border-radius:14px;box-shadow:0 12px 26px rgba(62,39,35,.14);padding:9px 15px;font-weight:700;font-size:.88rem;color:var(--rose-dark)}
+.badge-float.b1{top:16px;left:-12px}
+.badge-float.b2{bottom:18px;right:-8px}
+@media(max-width:880px){.badge-float.b1{left:6px}.badge-float.b2{right:6px}}
+.fade-up{animation:fadeUp .8s ease both}
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+/* ticker */
+.ticker{background:var(--rose-dark);color:#FFF3F7;overflow:hidden;padding:11px 0}
+.ticker-track{display:flex;gap:0;white-space:nowrap;animation:tick 26s linear infinite;width:max-content}
+.ticker span{padding:0 18px;font-weight:600;letter-spacing:.02em}
+.ticker .dot{color:#F6B8CF}
+@keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+/* sections */
+section{padding:58px 0}
+.sec-head{text-align:center;max-width:640px;margin:0 auto 34px}
+.sec-head .kicker{color:var(--rose);font-weight:700;letter-spacing:.06em;font-size:.85rem;text-transform:uppercase}
+.sec-head h2{font-size:clamp(1.55rem,3.6vw,2.2rem);margin:6px 0 8px;color:var(--ink)}
+.sec-head p{color:var(--muted)}
+/* filters + products */
+.filters{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:30px}
+.fbtn{border:1.5px solid var(--border);background:#fff;color:var(--rose-dark);font-family:inherit;font-weight:700;font-size:.95rem;padding:8px 20px;border-radius:999px;cursor:pointer;transition:all .15s}
+.fbtn.active,.fbtn:hover{background:var(--rose);border-color:var(--rose);color:#fff}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+@media(max-width:1020px){.grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:760px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:430px){.grid{grid-template-columns:1fr}}
+.pcard{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;box-shadow:0 6px 18px rgba(194,67,123,.07);transition:transform .18s ease, box-shadow .18s ease;display:flex;flex-direction:column}
+.pcard:hover{transform:translateY(-5px);box-shadow:0 16px 32px rgba(194,67,123,.15)}
+.pimg{background:linear-gradient(150deg,#FFFDFB,var(--rose-soft));aspect-ratio:4/5;overflow:hidden;position:relative}
+.pimg img{width:100%;height:100%;object-fit:cover}
+.pbadges{position:absolute;top:10px;left:10px;display:flex;flex-direction:column;gap:6px;align-items:flex-start;z-index:2}
+.badge-flash{background:#E63946;color:#fff;font-weight:800;font-size:.74rem;padding:4px 10px;border-radius:999px;box-shadow:0 3px 8px rgba(230,57,70,.35)}
+.badge-off{background:#C2437B;color:#fff;font-weight:800;font-size:.74rem;padding:4px 10px;border-radius:999px}
+.soldout-overlay{position:absolute;inset:0;background:rgba(20,20,20,.45);display:flex;align-items:center;justify-content:center;z-index:3}
+.soldout-overlay span{background:#C0392B;color:#fff;font-weight:800;font-size:1rem;padding:7px 18px;border-radius:999px;letter-spacing:.03em}
+.pdesc{font-size:.86rem;color:var(--muted);line-height:1.55;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.mrp{color:#C4A79E;text-decoration:line-through;font-weight:600;font-size:.86rem;margin-right:7px}
+.pstock{font-size:.8rem;color:var(--rose-dark);font-weight:600}
+.order-btn.disabled{background:#C9B4AC;pointer-events:none}
+#deliveryStrip{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:20px}
+.dchip{background:#FDEEF4;border:1.5px solid #C2437B55;color:var(--rose-dark);font-weight:700;padding:9px 16px;border-radius:999px;font-size:.92rem}
+.pbody{padding:16px;display:flex;flex-direction:column;gap:9px;flex:1}
+.pcat{font-size:.75rem;font-weight:700;color:var(--rose);letter-spacing:.05em}
+.pname{font-weight:700;font-size:1rem;line-height:1.45}
+.price-pill{display:inline-block;background:#FDEEF4;border:1px dashed var(--rose);color:var(--rose-dark);font-weight:700;font-size:.86rem;padding:5px 12px;border-radius:999px}
+.qtyrow{display:flex;align-items:center;justify-content:space-between;margin-top:auto}
+.qty{display:inline-flex;align-items:center;gap:2px;border:1.5px solid var(--border);border-radius:999px;overflow:hidden}
+.qty button{width:32px;height:32px;border:0;background:#FFF3F7;font-size:1.05rem;font-weight:700;color:var(--rose-dark);cursor:pointer}
+.qty .qv{min-width:34px;text-align:center;font-weight:700}
+.order-btn{display:inline-flex;align-items:center;gap:6px;background:#22a55b;color:#fff;font-weight:700;font-size:.9rem;padding:9px 15px;border-radius:999px}
+.order-btn:hover{background:#1c8a4b}
+/* testimonial */
+.testi{max-width:720px;margin:0 auto;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:30px 28px;box-shadow:0 6px 18px rgba(194,67,123,.07);text-align:center}
+.testi .stars{font-size:1.15rem;letter-spacing:.2em;margin-bottom:10px}
+.testi blockquote{font-size:1.15rem;font-weight:600;line-height:1.6}
+.testi .who{margin-top:12px;color:var(--muted);font-size:.92rem}
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+@media(max-width:880px){.steps{grid-template-columns:1fr}}
+.step{background:var(--card);border-radius:var(--radius);padding:24px;border:1px solid var(--border);text-align:center}
+.step .num{width:44px;height:44px;margin:0 auto 10px;border-radius:50%;background:linear-gradient(135deg,var(--rose),#E88BB0);color:#fff;font-weight:700;display:flex;align-items:center;justify-content:center;font-size:1.15rem}
+.step h3{margin-bottom:5px;color:var(--rose-dark)}
+.step p{color:var(--muted);font-size:.95rem}
+/* about + form */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px;align-items:stretch}
+@media(max-width:880px){.about-grid{grid-template-columns:1fr}}
+.panel{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:28px;box-shadow:0 6px 18px rgba(194,67,123,.07)}
+.panel h3{color:var(--rose-dark);margin-bottom:12px;font-size:1.2rem}
+.panel p{color:var(--muted);margin-bottom:10px}
+.panel .rowline{display:flex;gap:10px;align-items:flex-start;margin:10px 0;color:var(--ink)}
+.panel .rowline a{color:var(--rose-dark);font-weight:600}
+form .frow{margin-bottom:14px}
+form label{display:block;font-weight:600;margin-bottom:5px;font-size:.94rem}
+form input,form textarea{width:100%;border:1.5px solid var(--border);border-radius:12px;padding:11px 14px;font-family:inherit;font-size:1rem;background:#FFFDFB}
+form input:focus,form textarea:focus{outline:2px solid var(--rose);border-color:transparent}
+.submit-btn{width:100%;background:var(--rose);color:#fff;border:0;padding:14px;border-radius:999px;font-family:inherit;font-weight:700;font-size:1.02rem;cursor:pointer}
+.submit-btn:hover{background:var(--rose-dark)}
+/* footer */
+footer{background:var(--rose-dark);color:#FBE9F1;padding:42px 0 26px;margin-top:10px}
+footer .fgrid{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
+footer h4{color:#fff;margin-bottom:8px}
+footer p,footer a{color:#EFC9D9;font-size:.95rem}
+footer a:hover{color:#fff}
+.fbottom{border-top:1px solid rgba(255,255,255,.16);margin-top:24px;padding-top:16px;text-align:center;font-size:.86rem;color:#E3B7CB}
+/* chat — circular video button, right edge */
+#chatBtn{position:fixed;right:10px;top:50%;transform:translateY(-50%);z-index:200;background:transparent;border:0;padding:0;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:5px;font-family:inherit}
+#chatBtn .cimg{width:58px;height:58px;border-radius:50%;overflow:hidden;border:2.5px solid var(--rose);box-shadow:0 8px 20px rgba(156,43,94,.35);background:#fff}
+#chatBtn .cimg video{width:100%;height:100%;object-fit:cover;border-radius:50%;display:block}
+#chatBtn .clab{background:var(--rose-dark);color:#fff;font-weight:700;font-size:.66rem;padding:3px 9px;border-radius:999px;letter-spacing:.02em;box-shadow:0 4px 10px rgba(156,43,94,.3);white-space:nowrap}
+#chatPanel{position:fixed;right:14px;bottom:14px;z-index:210;width:min(360px,calc(100vw - 28px));height:min(520px,calc(100dvh - 28px));background:#fff;border-radius:20px;box-shadow:0 24px 60px rgba(62,39,35,.28);display:none;flex-direction:column;overflow:hidden;border:1px solid var(--border)}
+#chatPanel.open{display:flex}
+.chat-head{background:linear-gradient(120deg,var(--rose),var(--rose-dark));color:#fff;padding:14px 16px;display:flex;align-items:center;justify-content:space-between}
+.chat-head .t{font-weight:700;font-size:1.02rem}
+.chat-head .s{font-size:.78rem;opacity:.85}
+#chatClose{background:rgba(255,255,255,.18);border:0;color:#fff;width:30px;height:30px;border-radius:50%;cursor:pointer;font-size:1rem}
+#chatMsgs{flex:1;overflow-y:auto;padding:14px;background:#FFF6F1;display:flex;flex-direction:column;gap:9px}
+.msg{max-width:85%;padding:9px 13px;border-radius:15px;font-size:.93rem;line-height:1.5;white-space:pre-wrap;word-break:break-word}
+.msg.bot{background:#fff;border:1px solid var(--border);align-self:flex-start;border-bottom-left-radius:5px}
+.msg.me{background:var(--rose);color:#fff;align-self:flex-end;border-bottom-right-radius:5px}
+.msg .wa-order{display:inline-block;margin-top:8px;background:#22a55b;color:#fff;padding:8px 14px;border-radius:999px;font-weight:700;font-size:.88rem}
+.chat-input{display:flex;gap:8px;padding:11px;border-top:1px solid var(--border);background:#fff}
+.chat-input input{flex:1;border:1.5px solid var(--border);border-radius:999px;padding:10px 15px;font-family:inherit;font-size:.95rem}
+.chat-input input:focus{outline:2px solid var(--rose);border-color:transparent}
+.chat-input button{background:var(--rose);color:#fff;border:0;border-radius:999px;padding:10px 18px;font-family:inherit;font-weight:700;cursor:pointer}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#">
+      <img src="assets/logo.jpg" alt="Cake Elegance">
+      <span><span class="bname">Cake Elegance</span><br><span class="bsub">কাপকেক শপ • নিউমার্কেট, চট্টগ্রাম</span></span>
+    </a>
+    <nav class="navlinks">
+      <a href="#products">আমাদের কেক</a>
+      <a href="#ideas">ডিজাইন আইডিয়া</a>
+      <a href="#order">কীভাবে অর্ডার করবেন</a>
+      <a href="#about">আমাদের সম্পর্কে</a>
+    </nav>
+    <a class="navcta" href="https://wa.me/8801705590685" target="_blank" rel="noopener">WhatsApp-এ অর্ডার</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="fade-up">
+      <span class="eyebrow">📍 নিউমার্কেট, চট্টগ্রাম • সবসময় খোলা</span>
+      <h1>যেকোনো অনুষ্ঠানের <span class="grad">কাস্টমাইজড কেক</span></h1>
+      <p class="lead">আমরা জন্মদিন, গায়ে হলুদ, বিবাহবার্ষিকী, বেবী শাওয়ার, ব্রাইডাল শাওয়ার সহ যে কোন অনুষ্ঠানের কাস্টমাইজড কেক এর অর্ডার নিয়ে থাকি।</p>
+      <div class="hero-btns">
+        <a class="btn btn-wa" href="https://wa.me/8801705590685" target="_blank" rel="noopener">💬 WhatsApp-এ অর্ডার করুন</a>
+        <a class="btn btn-ghost" href="#products">কেক দেখুন</a>
+      </div>
+      <div class="chips">
+        <span class="chip">🎂 পছন্দের থিমে কাস্টম ডিজাইন</span>
+        <span class="chip">🚚 চট্টগ্রামে হোম ডেলিভারি</span>
+        <span class="chip">✨ Fresh • Delicious • Sweet • Tasty</span>
+      </div>
+    </div>
+    <div class="hero-visual fade-up">
+      <div class="hero-frame"><img src="assets/cake-04.jpg" alt="Cake Elegance — Ariel Princess Doll Cake"></div>
+      <span class="badge-float b1">🎂 কাস্টমাইজড ডিজাইন</span>
+      <span class="badge-float b2">🚚 সময়মতো ডেলিভারি</span>
+    </div>
+  </div>
+</section>
+
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track" id="tickerTrack"></div>
+</div>
+
+<section id="products" style="padding-top:44px">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker">Our Cakes</div>
+      <h2>আমাদের কেক</h2>
+      <p>আমাদের নিজের বানানো কেকের ডিজাইনগুলো দেখুন। পছন্দের কেকে পরিমাণ বেছে WhatsApp-এ অর্ডার করুন — দাম জানতে WhatsApp-এ মেসেজ করুন।</p>
+    </div>
+    <div class="filters" id="filters"></div>
+    <div class="grid" id="grid"></div>
+  </div>
+</section>
+
+<section id="ideas" style="padding-top:6px">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker">Design Ideas</div>
+      <h2>আরও ডিজাইন আইডিয়া</h2>
+      <p>পছন্দের ডিজাইনটি WhatsApp-এ পাঠিয়ে অর্ডার করুন — আপনার পছন্দমতো থিম ও ডিজাইনে কেক বানিয়ে দেওয়া হবে।</p>
+    </div>
+    <div class="grid" id="ideaGrid"></div>
+  </div>
+</section>
+
+<section id="review" style="padding-top:6px">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker">Customer Review</div>
+      <h2>কাস্টমার যা বললেন</h2>
+    </div>
+    <div class="testi">
+      <div class="stars">⭐⭐⭐⭐⭐</div>
+      <blockquote>“Apu cake ta onk onk Moja chilo 🤤🤤 thanks apu ❤️”</blockquote>
+      <div class="who">— Ismat Jahan, Facebook রিভিউ</div>
+    </div>
+  </div>
+</section>
+
+<section id="order">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker">How to Order</div>
+      <h2>কীভাবে অর্ডার করবেন</h2>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="num">১</div><h3>WhatsApp-এ অর্ডার</h3><p>পছন্দের কেক বেছে অর্ডার বাটনে ক্লিক করুন — অথবা নিজের পছন্দের ডিজাইন WhatsApp-এ পাঠিয়ে দিন।</p></div>
+      <div class="step"><div class="num">২</div><h3>কনফার্ম করুন</h3><p>আমরা দাম ও বিস্তারিত জানিয়ে আপনার অর্ডার কনফার্ম করবো।</p></div>
+      <div class="step"><div class="num">৩</div><h3>হোম ডেলিভারি</h3><p>চট্টগ্রামের ভেতরে হোম ডেলিভারি — সময়মতো ডেলিভারি, সবসময় তাজা ও মজাদার।</p></div>
+    </div>
+    <div id="deliveryStrip"></div>
+  </div>
+</section>
+
+<section id="about" style="padding-top:6px">
+  <div class="wrap about-grid">
+    <div class="panel">
+      <h3>আমাদের সম্পর্কে</h3>
+      <p>Cake Elegance — চট্টগ্রামের নিউমার্কেটের একটি কাপকেক ও কাস্টম কেকের দোকান। জন্মদিন, গায়ে হলুদ, বিবাহবার্ষিকী, বেবী শাওয়ার, ব্রাইডাল শাওয়ার — যেকোনো অনুষ্ঠানের জন্য পছন্দের থিম ও ডিজাইনে কাস্টমাইজড কেকের অর্ডার নেওয়া হয়।</p>
+      <div class="rowline"><span>📍</span><span>নিউমার্কেট, চট্টগ্রাম</span></div>
+      <div class="rowline"><span>🕒</span><span>সবসময় খোলা</span></div>
+      <div class="rowline"><span>📘</span><span><a href="https://www.facebook.com/people/Cake-Elegance/61562905666488/" target="_blank" rel="noopener">Facebook-এ আমাদের পেজ</a></span></div>
+      <div class="rowline"><span>💬</span><span>যেকোনো প্রশ্নে আমাদের Live Chat-এ মেসেজ করুন — ডান পাশের বাটনে ক্লিক করুন।</span></div>
+    </div>
+    <div class="panel">
+      <h3>অর্ডার ফর্ম</h3>
+      <form id="orderForm">
+        <div class="frow"><label for="fName">আপনার নাম</label><input id="fName" type="text" placeholder="নাম লিখুন" required></div>
+        <div class="frow"><label for="fPhone">মোবাইল নম্বর</label><input id="fPhone" type="tel" placeholder="01XXXXXXXXX" required></div>
+        <div class="frow"><label for="fMsg">কোন কেক চান?</label><textarea id="fMsg" rows="3" placeholder="কেকের নাম/ডিজাইন ও পরিমাণ লিখুন" required></textarea></div>
+        <button class="submit-btn" type="submit">WhatsApp-এ অর্ডার পাঠান</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="fgrid">
+      <div>
+        <h4>Cake Elegance</h4>
+        <p>কাস্টমাইজড কেক — জন্মদিন, গায়ে হলুদ, বিয়ে<br>ও সব অনুষ্ঠানের জন্য।</p>
+      </div>
+      <div>
+        <h4>যোগাযোগ</h4>
+        <p>নিউমার্কেট, চট্টগ্রাম<br>সবসময় খোলা<br><a href="https://wa.me/8801705590685" target="_blank" rel="noopener">WhatsApp-এ মেসেজ করুন</a> • <a href="https://www.facebook.com/people/Cake-Elegance/61562905666488/" target="_blank" rel="noopener">Facebook Page</a></p>
+      </div>
+      <div>
+        <h4>ক্যাটাগরি</h4>
+        <p><a href="#products">জন্মদিনের কেক</a><br><a href="#products">বিয়ে ও হলুদ</a><br><a href="#products">বাচ্চাদের থিম</a><br><a href="#ideas">ডিজাইন আইডিয়া</a></p>
+      </div>
+    </div>
+    <div class="fbottom">© Cake Elegance — সর্বস্বত্ব সংরক্ষিত</div>
+  </div>
+</footer>
+
+<button id="chatBtn" aria-label="Live Chat খুলুন"><span class="cimg"><video src="assets/chat-icon.mp4" poster="assets/chat-icon-poster.jpg" autoplay muted loop playsinline></video></span><span class="clab">Live Chat</span></button>
+<div id="chatPanel" role="dialog" aria-label="Live Chat">
+  <div class="chat-head">
+    <div><div class="t">Live Chat</div><div class="s">Cake Elegance — আমরা সাহায্য করতে এখানে আছি</div></div>
+    <button id="chatClose" aria-label="বন্ধ করুন">✕</button>
+  </div>
+  <div id="chatMsgs"></div>
+  <form class="chat-input" id="chatForm">
+    <input id="chatText" type="text" placeholder="আপনার প্রশ্ন লিখুন..." autocomplete="off">
+    <button type="submit">পাঠান</button>
+  </form>
+</div>
+
+<script>
+const SHOP_WHATSAPP = "8801705590685";
+const IDEA_CAT = "ডিজাইন আইডিয়া";
+const BN = n => String(n).replace(/[0-9]/g, d => "০১২৩৪৫৬৭৮৯"[d]);
+
+/* ticker */
+(function(){
+  const items = ["জন্মদিনের কেক","গায়ে হলুদ","বিয়ের কেক","বেবী শাওয়ার","ব্রাইডাল শাওয়ার","কাস্টমাইজড কেক","হোম ডেলিভারি"];
+  const half = items.map(t => `<span>${t}</span><span class="dot">✦</span>`).join("");
+  document.getElementById("tickerTrack").innerHTML = half + half;
+})();
+
+/* products */
+let PRODUCTS = [];
+let activeCat = "সব";
+const ownProducts = () => PRODUCTS.filter(p => p.cat !== IDEA_CAT);
+const ideaProducts = () => PRODUCTS.filter(p => p.cat === IDEA_CAT);
+function renderFilters(){
+  const cats = ["সব", ...new Set(ownProducts().map(p => p.cat))];
+  if (!cats.includes(activeCat)) activeCat = "সব";
+  document.getElementById("filters").innerHTML = cats.map(c =>
+    `<button class="fbtn ${c===activeCat?'active':''}" data-cat="${c}">${c}</button>`).join("");
+  document.querySelectorAll(".fbtn").forEach(b => b.addEventListener("click", () => {
+    activeCat = b.dataset.cat; renderFilters(); renderGrids();
+  }));
+}
+function numOf(s){
+  if (s === undefined || s === null) return null;
+  const t = String(s).replace(/[০-৯]/g, d => "০১২৩৪৫৬৭৮৯".indexOf(d));
+  const m = /(\d+(?:\.\d+)?)/.exec(t.replace(/,/g, ""));
+  return m ? parseFloat(m[1]) : null;
+}
+function esc(s){
+  return String(s || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+}
+function cardHtml(p){
+  const priceN = numOf(p.price), mrpN = numOf(p.mrp);
+  const off = (mrpN && priceN && mrpN > priceN) ? Math.round((1 - priceN / mrpN) * 100) : 0;
+  const qtyN = (p.qty === "" || p.qty === undefined || p.qty === null) ? null : parseInt(p.qty, 10);
+  const soldOut = !!p.soldout || qtyN === 0;
+  const orderable = p.orderable !== false && !soldOut;
+  const badges = `<div class="pbadges">${p.flash ? `<span class="badge-flash">⚡ Flash Sale</span>` : ""}${off ? `<span class="badge-off">-${BN(off)}% OFF</span>` : ""}</div>`;
+  const priceHtml = p.price
+    ? `<div>${off ? `<span class="mrp">৳ ${BN(p.mrp)}</span>` : ""}<span class="price-pill">৳ ${BN(p.price)}</span></div>`
+    : `<div><span class="price-pill">দাম জানতে WhatsApp করুন</span></div>`;
+  const stockHtml = (!soldOut && qtyN !== null && !isNaN(qtyN)) ? `<div class="pstock">স্টকে আছে: ${BN(qtyN)}টি</div>` : "";
+  const orderHtml = soldOut
+    ? `<div class="qtyrow"><a class="order-btn disabled" href="#">Sold Out — স্টক শেষ</a></div>`
+    : (orderable ? `<div class="qtyrow">
+        <span class="qty"><button type="button" class="qminus" aria-label="কমান">−</button><span class="qv">১</span><button type="button" class="qplus" aria-label="বাড়ান">+</button></span>
+        <a class="order-btn" href="#" target="_blank" rel="noopener">অর্ডার করুন</a>
+      </div>` : "");
+  return `
+  <article class="pcard" data-id="${p.id}">
+    <div class="pimg"><img src="${p.img}" alt="${esc(p.name)}" loading="lazy">${badges}${soldOut ? `<div class="soldout-overlay"><span>SOLD OUT</span></div>` : ""}</div>
+    <div class="pbody">
+      <span class="pcat">${esc(p.cat)}</span>
+      <div class="pname">${esc(p.name)}</div>
+      ${p.desc ? `<p class="pdesc">${esc(p.desc)}</p>` : ""}
+      ${priceHtml}
+      ${stockHtml}
+      ${orderHtml}
+    </div>
+  </article>`;
+}
+function bindCards(container){
+  container.querySelectorAll(".pcard").forEach(card => {
+    const id = card.dataset.id;
+    const p = PRODUCTS.find(x => x.id === id);
+    const btn = card.querySelector(".order-btn:not(.disabled)");
+    if (!btn || !p) return;
+    const qtyN = (p.qty === "" || p.qty === undefined || p.qty === null) ? null : parseInt(p.qty, 10);
+    const maxQ = (qtyN && qtyN > 0) ? qtyN : 99;
+    let q = 1;
+    const qv = card.querySelector(".qv");
+    function sync(){
+      qv.textContent = BN(q);
+      const msg = `আসসালামু আলাইকুম! আমি "${p.name}" অর্ডার করতে চাই।\nপরিমাণ: ${q}টি${p.price ? `\nদাম: ৳${p.price}` : ""}`;
+      btn.href = `https://wa.me/${SHOP_WHATSAPP}?text=${encodeURIComponent(msg)}`;
+    }
+    card.querySelector(".qminus").addEventListener("click", () => { if (q > 1) q--; sync(); });
+    card.querySelector(".qplus").addEventListener("click", () => { if (q < maxQ) q++; sync(); });
+    sync();
+  });
+}
+function renderGrids(){
+  const own = ownProducts().filter(p => activeCat === "সব" || p.cat === activeCat);
+  const grid = document.getElementById("grid");
+  grid.innerHTML = own.map(cardHtml).join("");
+  bindCards(grid);
+  const ideas = document.getElementById("ideaGrid");
+  ideas.innerHTML = ideaProducts().map(cardHtml).join("");
+  bindCards(ideas);
+}
+const FB_PRODUCTS_URL = "https://website-admin-hub-default-rtdb.asia-southeast1.firebasedatabase.app/shops/cake-elegance/products.json";
+function loadLocalProducts() {
+  return fetch("products.json").then(r => r.json()).then(d => {
+    PRODUCTS = d.products || [];
+    renderFilters(); renderGrids();
+  });
+}
+fetch(FB_PRODUCTS_URL).then(r => r.json()).then(list => {
+  if (Array.isArray(list) && list.length) {
+    PRODUCTS = list;
+    renderFilters(); renderGrids();
+  } else { loadLocalProducts().catch(() => {}); }
+}).catch(() => { loadLocalProducts().catch(() => {}); });
+
+/* delivery settings (from the admin panel) */
+fetch("https://website-admin-hub-default-rtdb.asia-southeast1.firebasedatabase.app/shops/cake-elegance/settings.json")
+  .then(r => r.json()).then(s => {
+    if (!s) return;
+    const chips = [];
+    if (s.home) chips.push("🏠 হোম ডেলিভারি" + (s.text ? " — " + esc(s.text) : " সুবিধা আছে"));
+    if (s.cod) chips.push("💵 ক্যাশ অন ডেলিভারি সুবিধা আছে");
+    if (chips.length) document.getElementById("deliveryStrip").innerHTML = chips.map(c => `<span class="dchip">${c}</span>`).join("");
+  }).catch(() => {});
+
+/* order form */
+document.getElementById("orderForm").addEventListener("submit", e => {
+  e.preventDefault();
+  const name = document.getElementById("fName").value.trim();
+  const phone = document.getElementById("fPhone").value.trim();
+  const msg = document.getElementById("fMsg").value.trim();
+  const text = `আসসালামু আলাইকুম! নতুন অর্ডার:\nনাম: ${name}\nমোবাইল: ${phone}\nকেক: ${msg}`;
+  window.open(`https://wa.me/${SHOP_WHATSAPP}?text=${encodeURIComponent(text)}`, "_blank");
+});
+
+/* chat — Live Chat (Gemini) */
+const chatPanel = document.getElementById("chatPanel");
+const chatMsgs = document.getElementById("chatMsgs");
+const history = [];
+let greeted = false;
+function addMsg(text, who, lead){
+  const div = document.createElement("div");
+  div.className = "msg " + who;
+  div.textContent = text;
+  if (lead) {
+    const a = document.createElement("a");
+    a.className = "wa-order";
+    a.target = "_blank"; a.rel = "noopener";
+    a.textContent = "WhatsApp-এ অর্ডার করুন";
+    const t = `আসসালামু আলাইকুম! নতুন অর্ডার:\nনাম: ${lead.name}\nমোবাইল: ${lead.phone}\nকেক: ${lead.product}`;
+    a.href = `https://wa.me/${SHOP_WHATSAPP}?text=${encodeURIComponent(t)}`;
+    div.appendChild(document.createElement("br"));
+    div.appendChild(a);
+  }
+  chatMsgs.appendChild(div);
+  chatMsgs.scrollTop = chatMsgs.scrollHeight;
+  return div;
+}
+document.getElementById("chatBtn").addEventListener("click", () => {
+  chatPanel.classList.add("open");
+  if (!greeted) {
+    greeted = true;
+    addMsg("আসসালামু আলাইকুম! Cake Elegance-এর Live Chat-এ স্বাগতম 😊 কেক, দাম বা অর্ডার নিয়ে যেকোনো প্রশ্ন করুন।", "bot");
+  }
+  document.getElementById("chatText").focus();
+});
+document.getElementById("chatClose").addEventListener("click", () => chatPanel.classList.remove("open"));
+document.getElementById("chatForm").addEventListener("submit", async e => {
+  e.preventDefault();
+  const input = document.getElementById("chatText");
+  const text = input.value.trim();
+  if (!text) return;
+  input.value = "";
+  addMsg(text, "me");
+  history.push({ role: "user", text });
+  const typing = addMsg("লিখছি...", "bot");
+  try {
+    const res = await fetch("/.netlify/functions/chat", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ messages: history })
+    });
+    const data = await res.json();
+    let reply = (data && data.reply) || "দুঃখিত, এখন উত্তর দিতে পারছি না। সরাসরি WhatsApp-এ মেসেজ করুন।";
+    let lead = null;
+    const m = reply.match(/LEAD_JSON:(\{.*\})/);
+    if (m) {
+      try { lead = JSON.parse(m[1]); } catch (_) {}
+      reply = reply.replace(/LEAD_JSON:\{.*\}/, "").trim();
+    }
+    typing.remove();
+    addMsg(reply, "bot", lead);
+    history.push({ role: "model", text: reply });
+  } catch (_) {
+    typing.remove();
+    addMsg("দুঃখিত, এখন একটু সমস্যা হচ্ছে। সরাসরি WhatsApp-এ মেসেজ করুন।", "bot");
+  }
+});
+</script>
+</body>
+</html>

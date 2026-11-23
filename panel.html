@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cake Elegance — অ্যাডমিন প্যানেল</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Hind Siliguri', system-ui, sans-serif; background: #FFF9F4; color: #1A1A1A; min-height: 100vh; }
+  header { background: #C2437B; color: #fff; padding: 14px 18px; display: flex; align-items: center; justify-content: space-between; }
+  header h1 { font-size: 19px; }
+  header button { background: #E2719F; color: #fff; border: 0; padding: 8px 14px; border-radius: 8px; font-size: 14px; cursor: pointer; }
+  .wrap { max-width: 640px; margin: 0 auto; padding: 18px 14px 40px; }
+  .card { background: #fff; border-radius: 14px; padding: 18px; box-shadow: 0 2px 10px rgba(0,0,0,.06); margin-bottom: 16px; }
+  label { display: block; font-size: 14px; font-weight: 600; margin: 12px 0 5px; }
+  input, select, textarea { width: 100%; padding: 11px 12px; border: 1.5px solid #F0D7E0; border-radius: 9px; font-size: 16px; background: #FFFDF8; font-family: inherit; }
+  input:focus, select:focus, textarea:focus { outline: 2px solid #C2437B33; border-color: #C2437B; }
+  .chk { display: flex; align-items: center; gap: 9px; font-size: 15px; font-weight: 600; margin: 13px 0 0; cursor: pointer; }
+  .chk input { width: 20px; height: 20px; accent-color: #C2437B; flex: none; }
+  .btn { display: inline-block; background: #C2437B; color: #fff; border: 0; padding: 12px 20px; border-radius: 9px; font-size: 16px; cursor: pointer; margin-top: 14px; }
+  .btn.orange { background: #E2719F; }
+  .btn.red { background: #C0392B; }
+  .btn.small { padding: 8px 13px; font-size: 14px; margin-top: 0; }
+  .err { color: #C0392B; font-size: 14px; margin-top: 10px; min-height: 18px; }
+  .ok { color: #C2437B; font-size: 15px; margin-top: 10px; min-height: 18px; font-weight: 600; }
+  .prod { display: flex; gap: 12px; align-items: center; padding: 10px 0; border-bottom: 1px solid #FBEFF4; }
+  .prod:last-child { border-bottom: 0; }
+  .prod img { width: 58px; height: 58px; object-fit: cover; border-radius: 9px; background: #FBEFF4; flex: none; }
+  .prod .info { flex: 1; min-width: 0; }
+  .prod .nm { font-weight: 600; font-size: 15px; }
+  .prod .meta { font-size: 13px; color: #777; }
+  .prod .acts { display: flex; gap: 6px; flex: none; }
+  #preview { width: 100%; max-height: 220px; object-fit: contain; border-radius: 10px; background: #FBEFF4; margin-top: 8px; display: none; }
+  .hint { font-size: 13px; color: #888; margin-top: 4px; }
+  .hidden { display: none !important; }
+  #busy { text-align: center; color: #C2437B; font-weight: 600; padding: 8px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Cake Elegance — অ্যাডমিন</h1>
+  <button id="logoutBtn" class="hidden">লগআউট</button>
+</header>
+
+<div class="wrap">
+  <!-- LOGIN -->
+  <div id="loginCard" class="card hidden">
+    <h2 style="font-size:18px;">লগইন করুন</h2>
+    <label>ইমেইল</label>
+    <input id="email" type="email" placeholder="আপনার ইমেইল" autocomplete="username">
+    <label>পাসওয়ার্ড</label>
+    <input id="pass" type="password" placeholder="পাসওয়ার্ড" autocomplete="current-password">
+    <button class="btn" id="loginBtn" style="width:100%;">লগইন</button>
+    <div class="err" id="loginErr"></div>
+    <p class="hint"><a href="#" id="forgotLink">পাসওয়ার্ড ভুলে গেছেন?</a> — ইমেইলে রিসেট লিংক যাবে।</p>
+  </div>
+
+  <!-- PANEL -->
+  <div id="panel" class="hidden">
+    <div class="card">
+      <div style="display:flex;justify-content:space-between;align-items:center;">
+        <h2 style="font-size:18px;">আমার প্রোডাক্ট (<span id="count">0</span>)</h2>
+        <button class="btn orange small" id="addBtn">+ নতুন প্রোডাক্ট</button>
+      </div>
+      <div class="ok" id="saveOk"></div>
+      <div id="list"></div>
+    </div>
+
+    <div class="card" id="settingsCard">
+      <h2 style="font-size:18px;">🚚 ডেলিভারি সেটিংস</h2>
+      <label class="chk"><input type="checkbox" id="sHome"> 🏠 Home Delivery চালু আছে</label>
+      <label>ডেলিভারির বিবরণ (charge / এলাকা — নিজের মতো লিখুন)</label>
+      <input id="sDelText" placeholder="যেমন: চট্টগ্রামে ৬০ টাকা, সারা দেশে ১২০ টাকা">
+      <label class="chk"><input type="checkbox" id="sCod"> 💵 Cash on Delivery চালু আছে</label>
+      <div>
+        <button class="btn" id="sSaveBtn">💾 Settings Save করুন</button>
+      </div>
+      <div class="ok" id="sOk"></div>
+      <div class="err" id="sErr"></div>
+    </div>
+
+    <div class="card hidden" id="editor">
+      <h2 style="font-size:18px;" id="editorTitle">প্রোডাক্ট</h2>
+      <label>আইডি</label>
+      <input id="fId" placeholder="যেমন CE-21">
+      <label>প্রোডাক্টের নাম</label>
+      <input id="fName" placeholder="প্রোডাক্টের নাম লিখুন">
+      <label>ক্যাটাগরি</label>
+      <input id="fCat" list="catList" placeholder="যেমন জন্মদিন">
+      <datalist id="catList">
+        <option value="জন্মদিন"></option>
+        <option value="বিয়ে ও হলুদ"></option>
+        <option value="বাচ্চাদের থিম"></option>
+        <option value="ডিজাইন আইডিয়া"></option>
+      </datalist>
+      <label>দাম (না দিলে খালি রাখুন)</label>
+      <input id="fPrice" placeholder="যেমন 450tk">
+      <label>আগের দাম (discount দিতে চাইলে দিন — % off নিজে নিজে হিসাব হবে)</label>
+      <input id="fMrp" placeholder="যেমন 600tk — না দিলে খালি রাখুন">
+      <label>প্রোডাক্টের বিবরণ (Description)</label>
+      <textarea id="fDesc" rows="3" placeholder="প্রোডাক্ট সম্পর্কে দুই-এক লাইন লিখুন"></textarea>
+      <label>স্টকে কয়টা আছে (Quantity — খালি রাখলে সীমা নেই)</label>
+      <input id="fQty" type="number" min="0" placeholder="যেমন 20">
+      <label class="chk"><input type="checkbox" id="fFlash"> ⚡ Flash Sale ট্যাগ দেখাও</label>
+      <label class="chk"><input type="checkbox" id="fSold"> ❌ Sold Out — স্টক শেষ (order বন্ধ থাকবে)</label>
+      <label class="chk"><input type="checkbox" id="fOrder" checked> 🛒 Order বাটন চালু রাখো</label>
+      <label>ছবি</label>
+      <input id="fFile" type="file" accept="image/*">
+      <p class="hint">গ্যালারি থেকে ছবি বেছে নিন — ছবি নিজে থেকেই হালকা ছোট হয়ে আপলোড হবে।</p>
+      <img id="preview" alt="">
+      <div>
+        <button class="btn" id="saveBtn">💾 Save করুন — সাথে সাথে লাইভ হবে</button>
+        <button class="btn small" id="cancelBtn" style="background:#999;">বাতিল</button>
+      </div>
+      <div class="err" id="editErr"></div>
+    </div>
+  </div>
+
+  <div id="busy">লোড হচ্ছে…</div>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+<script>
+const SHOP = "cake-elegance";
+firebase.initializeApp({
+  apiKey: "AIzaSyAd0YsAXug5uRDrXOuhGzaCoQiGjFo5-V8",
+  authDomain: "website-admin-hub.firebaseapp.com",
+  databaseURL: "https://website-admin-hub-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "website-admin-hub",
+  appId: "1:145948317288:web:e6a87cd4a16f3e76770ddd"
+});
+const auth = firebase.auth();
+const dbRef = firebase.database().ref("shops/" + SHOP + "/products");
+const settingsRef = firebase.database().ref("shops/" + SHOP + "/settings");
+let products = [];
+let editingImg = "";   // current image value for the product being edited
+let newImgData = "";   // freshly chosen image (data URL), empty if unchanged
+
+const $ = id => document.getElementById(id);
+
+auth.onAuthStateChanged(user => {
+  $("busy").classList.add("hidden");
+  if (user) {
+    $("loginCard").classList.add("hidden");
+    $("panel").classList.remove("hidden");
+    $("logoutBtn").classList.remove("hidden");
+    loadProducts();
+    loadSettings();
+  } else {
+    $("panel").classList.add("hidden");
+    $("logoutBtn").classList.add("hidden");
+    $("loginCard").classList.remove("hidden");
+  }
+});
+
+$("loginBtn").onclick = () => {
+  $("loginErr").textContent = "";
+  auth.signInWithEmailAndPassword($("email").value.trim(), $("pass").value)
+    .catch(e => { $("loginErr").textContent = "লগইন হয়নি — ইমেইল/পাসওয়ার্ড আবার দেখে চেষ্টা করুন।"; });
+};
+$("forgotLink").onclick = e => {
+  e.preventDefault();
+  const em = $("email").value.trim();
+  if (!em) { $("loginErr").textContent = "আগে ইমেইলটা লিখুন, তারপর এই লিংকে চাপ দিন।"; return; }
+  auth.sendPasswordResetEmail(em)
+    .then(() => { $("loginErr").style.color = "#C2437B"; $("loginErr").textContent = "রিসেট লিংক আপনার ইমেইলে পাঠানো হয়েছে।"; })
+    .catch(() => { $("loginErr").textContent = "লিংক পাঠানো যায়নি — ইমেইলটা ঠিক আছে কিনা দেখুন।"; });
+};
+$("logoutBtn").onclick = () => auth.signOut();
+
+function loadProducts() {
+  dbRef.once("value").then(snap => {
+    const v = snap.val();
+    products = Array.isArray(v) ? v : (v ? Object.values(v) : []);
+    renderList();
+  }).catch(() => { $("saveOk").textContent = "প্রোডাক্ট লোড হয়নি — ইন্টারনেট দেখে আবার খুলুন।"; });
+}
+
+function loadSettings() {
+  settingsRef.once("value").then(snap => {
+    const s = snap.val() || {};
+    $("sHome").checked = !!s.home;
+    $("sDelText").value = s.text || "";
+    $("sCod").checked = !!s.cod;
+  }).catch(() => {});
+}
+$("sSaveBtn").onclick = () => {
+  $("sErr").textContent = ""; $("sOk").textContent = "";
+  const s = { home: $("sHome").checked, text: $("sDelText").value.trim(), cod: $("sCod").checked };
+  settingsRef.set(s).then(() => {
+    $("sOk").textContent = "✅ Settings Save হয়েছে — website-এ লাইভ হয়ে গেছে!";
+    setTimeout(() => { $("sOk").textContent = ""; }, 5000);
+  }).catch(() => { $("sErr").textContent = "Save হয়নি — ইন্টারনেট দেখে আবার চেষ্টা করুন।"; });
+};
+
+function renderList() {
+  $("count").textContent = products.length;
+  const box = $("list");
+  box.innerHTML = "";
+  products.forEach((p, i) => {
+    const row = document.createElement("div");
+    row.className = "prod";
+    const img = document.createElement("img");
+    img.src = p.img || ""; img.alt = "";
+    const info = document.createElement("div");
+    info.className = "info";
+    info.innerHTML = "<div class='nm'></div><div class='meta'></div>";
+    info.querySelector(".nm").textContent = p.name || "";
+    info.querySelector(".meta").textContent = (p.id || "") + " · " + (p.cat || "") + (p.price ? " · " + p.price : " · দাম নেই")
+      + (p.flash ? " · ⚡Flash" : "") + (p.soldout ? " · Sold Out" : "");
+    const acts = document.createElement("div");
+    acts.className = "acts";
+    const eb = document.createElement("button");
+    eb.className = "btn small"; eb.textContent = "বদলান"; eb.onclick = () => openEditor(i);
+    const db = document.createElement("button");
+    db.className = "btn small red"; db.textContent = "মুছুন";
+    db.onclick = () => {
+      if (db.dataset.armed) { removeProduct(i); }
+      else {
+        db.dataset.armed = "1"; db.textContent = "নিশ্চিত মুছুন?";
+        setTimeout(() => { db.dataset.armed = ""; db.textContent = "মুছুন"; }, 6000);
+      }
+    };
+    acts.appendChild(eb); acts.appendChild(db);
+    row.appendChild(img); row.appendChild(info); row.appendChild(acts);
+    box.appendChild(row);
+  });
+}
+
+function nextId() {
+  let max = 0;
+  products.forEach(p => { const m = /(\d+)\s*$/.exec(p.id || ""); if (m) max = Math.max(max, parseInt(m[1], 10)); });
+  return "CE-" + String(max + 1).padStart(2, "0");
+}
+
+function openEditor(i) {
+  const p = i >= 0 ? products[i] : { id: nextId(), name: "", cat: "", price: "", img: "" };
+  $("editorTitle").textContent = i >= 0 ? "প্রোডাক্ট বদলান" : "নতুন প্রোডাক্ট";
+  $("fId").value = p.id || ""; $("fId").disabled = i >= 0;
+  $("fName").value = p.name || "";
+  $("fCat").value = p.cat || "";
+  $("fPrice").value = p.price || "";
+  $("fMrp").value = p.mrp || "";
+  $("fDesc").value = p.desc || "";
+  $("fQty").value = (p.qty === undefined || p.qty === null) ? "" : p.qty;
+  $("fFlash").checked = !!p.flash;
+  $("fSold").checked = !!p.soldout;
+  $("fOrder").checked = p.orderable !== false;
+  $("fFile").value = "";
+  editingImg = p.img || ""; newImgData = "";
+  const pv = $("preview");
+  if (editingImg) { pv.src = editingImg; pv.style.display = "block"; } else { pv.style.display = "none"; }
+  $("editErr").textContent = "";
+  $("editor").dataset.idx = i;
+  $("editor").classList.remove("hidden");
+  $("editor").scrollIntoView({ behavior: "smooth" });
+}
+$("addBtn").onclick = () => openEditor(-1);
+$("cancelBtn").onclick = () => $("editor").classList.add("hidden");
+
+$("fFile").addEventListener("change", e => {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = () => {
+    const img = new Image();
+    img.onload = () => {
+      const max = 1000;
+      let w = img.width, h = img.height;
+      if (w > max || h > max) { const s = max / Math.max(w, h); w = Math.round(w * s); h = Math.round(h * s); }
+      const c = document.createElement("canvas"); c.width = w; c.height = h;
+      c.getContext("2d").drawImage(img, 0, 0, w, h);
+      newImgData = c.toDataURL("image/jpeg", 0.75);
+      const pv = $("preview"); pv.src = newImgData; pv.style.display = "block";
+    };
+    img.src = reader.result;
+  };
+  reader.readAsDataURL(file);
+});
+
+$("saveBtn").onclick = () => {
+  const idx = parseInt($("editor").dataset.idx, 10);
+  const name = $("fName").value.trim();
+  if (!name) { $("editErr").textContent = "প্রোডাক্টের নাম লিখুন।"; return; }
+  const p = {
+    id: $("fId").value.trim() || nextId(),
+    name: name,
+    cat: $("fCat").value.trim(),
+    price: $("fPrice").value.trim(),
+    mrp: $("fMrp").value.trim(),
+    desc: $("fDesc").value.trim(),
+    qty: $("fQty").value.trim(),
+    flash: $("fFlash").checked,
+    soldout: $("fSold").checked,
+    orderable: $("fOrder").checked,
+    img: newImgData || editingImg
+  };
+  if (!p.img) { $("editErr").textContent = "একটা ছবি বেছে নিন।"; return; }
+  if (idx >= 0) products[idx] = p; else products.push(p);
+  saveAll("✅ Save হয়েছে — website-এ লাইভ হয়ে গেছে!");
+};
+
+function removeProduct(i) {
+  products.splice(i, 1);
+  saveAll("✅ প্রোডাক্ট মুছে গেছে — website থেকে সরে গেছে।");
+}
+
+function saveAll(msg) {
+  $("saveBtn").disabled = true;
+  dbRef.set(products).then(() => {
+    $("saveBtn").disabled = false;
+    $("editor").classList.add("hidden");
+    $("saveOk").textContent = msg;
+    renderList();
+    setTimeout(() => { $("saveOk").textContent = ""; }, 5000);
+  }).catch(() => {
+    $("saveBtn").disabled = false;
+    $("editErr").textContent = "Save হয়নি — ইন্টারনেট দেখে আবার চেষ্টা করুন।";
+  });
+}
+</script>
+</body>
+</html>
