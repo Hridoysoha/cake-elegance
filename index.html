@@ -40,12 +40,14 @@ header{position:sticky;top:0;z-index:60;background:rgba(255,249,244,.92);backdro
 .hero-grid{position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:44px;align-items:center}
 @media(max-width:880px){.hero-grid{grid-template-columns:1fr}}
 .eyebrow{display:inline-block;background:#fff;border:1px solid var(--border);color:var(--rose-dark);font-weight:600;font-size:.85rem;padding:5px 14px;border-radius:999px;margin-bottom:16px}
-h1{font-size:clamp(2rem,5.2vw,3.3rem);line-height:1.25;font-weight:700;color:var(--ink);transform-origin:left center;animation:titlePulse 5s ease-in-out infinite}
-h1 .grad{background:linear-gradient(92deg,var(--rose) 20%,#E88BB0 42%,#FBE3EE 50%,#E88BB0 58%,var(--rose) 80%);background-size:220% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:titleShine 5s ease-in-out infinite}
-@keyframes titlePulse{0%{transform:scale(1)}7%{transform:scale(1.018)}14%{transform:scale(1)}100%{transform:scale(1)}}
-@keyframes titleShine{0%{background-position:115% 0}28%{background-position:-115% 0}100%{background-position:-115% 0}}
+h1{font-size:clamp(2rem,5.2vw,3.3rem);line-height:1.25;font-weight:700;color:var(--ink)}
+h1 .grad{color:transparent}
+h1 .word{display:inline-block;white-space:nowrap}
+h1 .ch{display:inline-block;animation:chLoop 5s ease-in-out infinite;animation-delay:calc(var(--i)*55ms)}
+h1 .grad .ch{background:linear-gradient(92deg,var(--rose),#E88BB0);-webkit-background-clip:text;background-clip:text;color:transparent}
+@keyframes chLoop{0%{opacity:0;transform:translateY(16px) rotate(3deg);filter:blur(7px)}16%{opacity:1;transform:translateY(0) rotate(0deg);filter:blur(0)}80%{opacity:1;transform:translateY(0);filter:blur(0)}94%,100%{opacity:0;transform:translateY(-14px) rotate(-2deg);filter:blur(7px)}}
 @media(max-width:480px){h1{font-size:1.85rem;line-height:1.32}}
-@media(prefers-reduced-motion:reduce){h1,h1 .grad{animation:none}}
+@media(prefers-reduced-motion:reduce){h1 .ch{animation:none}}
 .hero p.lead{margin:18px 0 26px;font-size:1.1rem;color:var(--muted);max-width:34rem}
 .hero-btns{display:flex;gap:14px;flex-wrap:wrap}
 .btn{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border-radius:999px;font-weight:700;font-size:1rem;transition:transform .15s ease, box-shadow .15s ease}
@@ -506,6 +508,34 @@ document.getElementById("chatForm").addEventListener("submit", async e => {
     addMsg("দুঃখিত, এখন একটু সমস্যা হচ্ছে। সরাসরি WhatsApp-এ মেসেজ করুন।", "bot");
   }
 });
+</script>
+<script>
+(function(){
+  var h1=document.querySelector('h1'); if(!h1) return;
+  var seg=('Segmenter' in Intl)?new Intl.Segmenter('bn',{granularity:'grapheme'}):null;
+  var idx=0;
+  function units(word){
+    if(seg){return Array.from(seg.segment(word),function(s){return s.segment;});}
+    return [word];
+  }
+  function build(text){
+    var frag=document.createDocumentFragment();
+    text.split(/(\s+)/).forEach(function(part){
+      if(!part) return;
+      if(/^\s+$/.test(part)){frag.appendChild(document.createTextNode(' '));return;}
+      var w=document.createElement('span'); w.className='word';
+      units(part).forEach(function(c){
+        var s=document.createElement('span'); s.className='ch'; s.style.setProperty('--i',idx++); s.textContent=c; w.appendChild(s);
+      });
+      frag.appendChild(w);
+    });
+    return frag;
+  }
+  Array.from(h1.childNodes).forEach(function(node){
+    if(node.nodeType===3){ node.replaceWith(build(node.textContent)); }
+    else if(node.nodeType===1){ var t=node.textContent; node.textContent=''; node.appendChild(build(t)); }
+  });
+})();
 </script>
 </body>
 </html>
