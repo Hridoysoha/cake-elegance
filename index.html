@@ -43,9 +43,10 @@ header{position:sticky;top:0;z-index:60;background:rgba(255,249,244,.92);backdro
 h1{font-size:clamp(2rem,5.2vw,3.3rem);line-height:1.25;font-weight:700;color:var(--ink)}
 h1 .grad{color:transparent}
 h1 .word{display:inline-block;white-space:nowrap}
-h1 .ch{display:inline-block;animation:chLoop 5s ease-in-out infinite;animation-delay:calc(var(--i)*55ms)}
-h1 .grad .ch{background:linear-gradient(92deg,var(--rose),#E88BB0);-webkit-background-clip:text;background-clip:text;color:transparent}
-@keyframes chLoop{0%{opacity:0;transform:translateY(16px) rotate(3deg);filter:blur(7px)}16%{opacity:1;transform:translateY(0) rotate(0deg);filter:blur(0)}80%{opacity:1;transform:translateY(0);filter:blur(0)}94%,100%{opacity:0;transform:translateY(-14px) rotate(-2deg);filter:blur(7px)}}
+h1 .ch{display:inline-block;background:linear-gradient(100deg,var(--ink) 35%,#B08D7C 50%,var(--ink) 65%);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:chLoop 60s ease-in-out infinite,chShine 3s linear infinite;animation-delay:calc(var(--i)*55ms),0s}
+h1 .grad .ch{background:linear-gradient(100deg,var(--rose) 35%,#FBD9E8 50%,var(--rose) 65%);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent}
+@keyframes chLoop{0%{opacity:0;transform:translateY(16px) rotate(3deg);filter:blur(7px)}3%{opacity:1;transform:translateY(0) rotate(0deg);filter:blur(0)}93%{opacity:1;transform:translateY(0);filter:blur(0)}98%,100%{opacity:0;transform:translateY(-14px) rotate(-2deg);filter:blur(7px)}}
+@keyframes chShine{0%{background-position:120% 0}100%{background-position:-120% 0}}
 @media(max-width:480px){h1{font-size:1.85rem;line-height:1.32}}
 @media(prefers-reduced-motion:reduce){h1 .ch{animation:none}}
 .hero p.lead{margin:18px 0 26px;font-size:1.1rem;color:var(--muted);max-width:34rem}
